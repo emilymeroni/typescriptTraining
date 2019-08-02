@@ -1,0 +1,23 @@
+{
+  "name": "typescripttraining",
+  "version": "1.0.0",
+  "description": "TypeScript Training on Udemy",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "lite-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emilymeroni/typescriptTraining.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emilymeroni/typescriptTraining/issues"
+  },
+  "homepage": "https://github.com/emilymeroni/typescriptTraining#readme",
+  "devDependencies": {
+    "lite-server": "^2.5.3"
+  }
+}
