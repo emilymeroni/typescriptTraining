@@ -223,3 +223,51 @@ class SimpleMath<T extends number> {
  ```
  ### Multiple generic types
  You can also use more than one generic type.
+
+ ## Decorators
+ A decorator is a function, nothing special. It is attacched to a class with the @ symbol.
+
+Decorators can be used for:
+
+ - Class
+ - Method
+ - Property
+ - Parameter
+
+ You can also use factory functions that accepts some parameters and returns a decorator.
+ ```javascript
+function logged(constructorFn: Function) {
+  console.log(constructorFn);
+}
+
+function logging(value: boolean) {
+  return value = logged : null;
+}
+
+@logging(false) 
+class Car {}
+ ```
+A decorator can also add functionalities to the class.
+```javascript
+function printable(constructorFn: Function) {
+  constructorFn.prototype.print = function() {
+    console.log(this);
+  }
+}
+
+@printable
+class Plant {
+  name = "Green Plant";
+}
+
+const plant = new Plant();
+(<any>plant).print();
+ ```
+ You can add multiple decorators to a class.
+
+## Using JS libraries
+Type Definitions: if you create your own file you need it to be of type .d.ts. Inside you use the `declare` keyword. 
+
+There are also Public Type Definitions for the most popular libraries that can be installed through npm. They will all end up in the @types folder in node_modules. 
+
+Installing types is really helpful to intellisense.
