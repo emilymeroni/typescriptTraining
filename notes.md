@@ -192,3 +192,34 @@ interface AgedPerson extends NamedPerson {
  ```
 ### What happens to interfaces when compiled?
 They get totally ignored when the code is compiled to JS. They are only useful at compile time for you to catch errors in advance.
+## Generics
+You may want a function that handles all type of data but and also helps you to know which operations you can do. It makes the code flexible and managable. 
+```javascript
+function echo<T>(data: T) {
+  return data;
+}
+ ```
+ ### Built in Generics
+ The most popular generic type by default is the Array.
+```javascript
+const testResults: Array<number> = [];
+testResults.push(2); // Works
+testResults.push('a string'); // Doesn't work
+ ```
+ ### Generic Types
+ Take the following example: we are creating a constant and assigning a generic function type where the input is that generic type and returns the type.
+```javascript
+const echo2: <T>(data : T) => T = echo;
+ ```
+ ### Generic Class
+```javascript
+class SimpleMath<T extends number> {
+  baseValue: T;
+  multipleValue: T;
+  calculate(): number {
+    return this.baseValue * this.multiplyValue;
+  }
+}
+ ```
+ ### Multiple generic types
+ You can also use more than one generic type.

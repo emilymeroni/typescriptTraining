@@ -5,7 +5,7 @@ interface NamedPerson {
   greet(lastName: string) : void;
 }
 
-const person: NamedPerson = {
+const person1: NamedPerson = {
   firstName: "Ruska",
   hobbies: ["Barking", "Chasing balls"],
   greet(lastName: string) {
@@ -13,4 +13,4 @@ const person: NamedPerson = {
   }
 }
 
-person.greet("ciccio");
+person1.greet("Whoopie");
