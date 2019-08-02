@@ -119,3 +119,76 @@ When you initialise a variable with null, it will only be of type null with the 
 let canOnlyBeNull = null;
 canBeNull = 12; // Will throw an error
  ```
+
+ ## Namespace
+ You can create namespaces for functions to not pollute the global namespace with the keyword `namespace`. The code inside it will then be compiled in an IIFE.
+ ```javascript
+namespace MyMath {
+  const PI = 3.14;
+
+  export function calculateCircumference(diameter: number) {
+    return diameter * PI;
+  }
+}
+ ```
+
+ You may also split a namespace in multiple files, as long as you use theh same namespace.
+
+ To bundle multiple files you can use the command `tsc --outFile destinationFile.js fileList`. Rather than having to specify a list of files it is better to use imports. TypeSCript has the following syntax:
+  ```javascript
+/// <reference path="circleMath.ts" />
+ ```
+
+ Using namespaces have some disadvantages compared to ES6 modules, as they are not very declarative and it is not clear which dependencies there are explictly.
+
+## Interfaces
+
+We define a contract to guarantee the code that certain properties or methods are available. Note: when passing object literals directly the check is more strict (for example, if I add an extra argument the compilation will fail).
+
+```javascript
+interface NamedPerson {
+  firstName: string,
+  age?: number; //optional argument
+  [propName: string] : any; // flexible keyname when you don't know the name of the property in advance
+  greet(lastName: string) : void;
+}
+
+const person: NamedPerson = {
+  firstName: "Ruska",
+  hobbies: ["Barking", "Chasing balls"],
+  greet(lastName: string) {
+    console.log("Hi `lastName`")
+  }
+}
+ ```
+
+You can also use interfaces in class declarations as so:
+
+```javascript
+class Person implements NamedPerson {
+  firstName: "Ruska",
+  greet(lastName: string) {
+    console.log("Hi `lastName`")
+  }
+}
+ ```
+
+ ### Function  Types
+ You can use interfaces for function types. it is handier than writing them inline.
+
+ ```javascript
+interface DoubleValueFunc {
+  (number1: number, number2: number): number;
+}
+let myDoubleFunction: DoubleValueFunc;
+ ```
+
+ ### Interface Inheritance
+ You can inherit interfaces to specify that an object must implement both contracts.
+ ```javascript
+interface AgedPerson extends NamedPerson {
+  age: number;
+}
+ ```
+### What happens to interfaces when compiled?
+They get totally ignored when the code is compiled to JS. They are only useful at compile time for you to catch errors in advance.
